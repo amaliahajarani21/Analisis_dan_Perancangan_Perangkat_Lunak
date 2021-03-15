@@ -99,9 +99,6 @@ public class IntegerList
     }
 
     public void replaceAll (int oldVal, int newVal) {
-        int position = 0;
-        boolean exist = false;
-
         for (int i=0; i < list.length-1; i++) 
             if (list[i] == oldVal)
                 list[i] = newVal;
@@ -114,16 +111,26 @@ public class IntegerList
         int position = -1;
 
         while (first <= last) {
+            System.out.println("hello1");
             if (list[mid] < target) {
                 first = mid + 1;
+                System.out.println("hello2");
             } else if (list[mid] == target) {
                 position = mid;
+                System.out.println("hello3");
             } else {
                 last = mid - 1;
+                System.out.println("hello4");
             }
             mid = (first + last) / 2;
+            System.out.println("hello5");
         }
 
+        if (first > last) {
+            position = -1;
+            System.out.println("hello6");
+        }
+        System.out.println(position);
         return position;
     }
 } 

@@ -89,6 +89,14 @@ public class IntegerListTest
 
                 list.replaceAll(oldVal, newVal);
                 break;
+            case 8:
+                System.out.print("Enter the value to look for: "); 
+                loc = list.binarySearchD(scan.nextInt()); 
+                if (loc != -1) 
+                    System.out.println("Found at location " + loc); 
+                else 
+                    System.out.println("Not in list"); 
+                break; 
             default: 
                 System.out.println("Sorry, invalid choice"); 
         } 
@@ -109,6 +117,7 @@ public class IntegerListTest
         System.out.println("5: Print the list"); 
         System.out.println("6: Change Value (only the first similar value will be changed)"); 
         System.out.println("7: Change Value (all similar value will be changed)"); 
+        System.out.println("8: Find an element in the list using binary search"); 
         System.out.print("\nEnter your choice: "); 
     } 
 }
