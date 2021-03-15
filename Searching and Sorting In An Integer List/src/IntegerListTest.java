@@ -5,6 +5,9 @@
 // 
 // **************************************************************** 
 import java.util.Scanner; 
+import java.util.ArrayList; 
+import java.util.Arrays; 
+import java.util.List; 
 
 public class IntegerListTest 
 { 
@@ -59,7 +62,17 @@ public class IntegerListTest
                 list.print(); 
                 break; 
             case 5:
-                System.out.println("Replace the value that you want");
+                Scanner scan1 = new Scanner(System.in); 
+                Scanner scan2 = new Scanner(System.in);
+                int oldVal, newVal;
+
+                System.out.println("Insert value that you want to change: ");
+                oldVal = scan1.nextInt();
+                System.out.println("Insert value replacement: ");
+                newVal = scan1.nextInt();
+
+                list.replaceFirst(oldVal, newVal);
+                break;
             default: 
                 System.out.println("Sorry, invalid choice"); 
         } 
@@ -80,15 +93,4 @@ public class IntegerListTest
         System.out.println("5: Change Value"); 
         System.out.print("\nEnter your choice: "); 
     } 
-
-    public void replaceNumber() {
-        Scanner scan1 = new Scanner(System.in); 
-        Scanner scan2 = new Scanner(System.in);
-
-        int oldVal, newVal;
-        System.out.println("Insert value that you want to change: ");
-        oldVal = scan1.nextInt();
-        System.out.println("Insert value replacement: ");
-        newVal = scan1.nextInt();
-    }
 }

@@ -71,7 +71,7 @@ public class IntegerList
         } 
     } 
 
-    public void replaceAll(int oldVal, int newVal) {
+    public void replaceFirst(int oldVal, int newVal) {
         int position = search(oldVal);
 
         if(position == -1) {
