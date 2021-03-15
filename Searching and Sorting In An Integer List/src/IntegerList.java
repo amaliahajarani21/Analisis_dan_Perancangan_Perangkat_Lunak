@@ -54,7 +54,7 @@ public class IntegerList
     //------------------------------------------------------- 
     //sort the list into ascending order using the selection sort algorithm 
     //------------------------------------------------------- 
-    public void selectionSort() 
+    public void selectionSortIncrease() 
     { 
         int minIndex; 
         for (int i=0; i < list.length-1; i++) 
@@ -68,6 +68,23 @@ public class IntegerList
             int temp = list[i]; 
             list[i] = list[minIndex]; 
             list[minIndex] = temp; 
+        } 
+    } 
+
+    public void selectionSortDecrease() 
+    { 
+        int maxIndex; 
+        for (int i=0; i < list.length-1; i++) 
+        { 
+            //find smallest element in list starting at location i 
+            maxIndex = i; 
+            for (int j = i+1; j < list.length; j++) 
+                if (list[j] > list[maxIndex]) 
+                    maxIndex = j; 
+            //swap list[i] with smallest element 
+            int temp = list[i]; 
+            list[i] = list[maxIndex]; 
+            list[maxIndex] = temp; 
         } 
     } 
 
@@ -88,5 +105,25 @@ public class IntegerList
         for (int i=0; i < list.length-1; i++) 
             if (list[i] == oldVal)
                 list[i] = newVal;
+    }
+
+    public int binarySearchD (int target) {
+        int first = 0;
+        int last = list.length - 1;
+        int mid = (first + last) / 2;
+        int position = -1;
+
+        while (first <= last) {
+            if (list[mid] < target) {
+                first = mid + 1;
+            } else if (list[mid] == target) {
+                position = mid;
+            } else {
+                last = mid - 1;
+            }
+            mid = (first + last) / 2;
+        }
+
+        return position;
     }
 } 

@@ -50,9 +50,12 @@ public class IntegerListTest
                 list.randomize(); 
                 break; 
             case 2: 
-                list.selectionSort(); 
+                list.selectionSortIncrease(); 
                 break; 
             case 3: 
+                list.selectionSortDecrease(); 
+                break; 
+            case 4: 
                 System.out.print("Enter the value to look for: "); 
                 loc = list.search(scan.nextInt()); 
                 if (loc != -1) 
@@ -60,10 +63,10 @@ public class IntegerListTest
                 else 
                     System.out.println("Not in list"); 
                 break; 
-            case 4: 
+            case 5: 
                 list.print(); 
                 break; 
-            case 5:
+            case 6:
                 Scanner scan1 = new Scanner(System.in); 
                 Scanner scan2 = new Scanner(System.in);
 
@@ -74,7 +77,7 @@ public class IntegerListTest
 
                 list.replaceFirst(oldVal, newVal);
                 break;
-            case 6:
+            case 7:
                 Scanner scan3 = new Scanner(System.in); 
                 Scanner scan4 = new Scanner(System.in);
                 int oldValue, newValue;
@@ -100,11 +103,12 @@ public class IntegerListTest
         System.out.println(" ===="); 
         System.out.println("0: Quit"); 
         System.out.println("1: Create a new list (** do this first!! **)"); 
-        System.out.println("2: Sort the list using selection sort"); 
-        System.out.println("3: Find an element in the list using linear search"); 
-        System.out.println("4: Print the list"); 
-        System.out.println("5: Change Value (only the first similar value will be changed)"); 
-        System.out.println("6: Change Value (all similar value will be changed)"); 
+        System.out.println("2: Sort the list using selection sort in increasing order"); 
+        System.out.println("3: Sort the list using selection sort in decreasing order"); 
+        System.out.println("4: Find an element in the list using linear search"); 
+        System.out.println("5: Print the list"); 
+        System.out.println("6: Change Value (only the first similar value will be changed)"); 
+        System.out.println("7: Change Value (all similar value will be changed)"); 
         System.out.print("\nEnter your choice: "); 
     } 
 }
