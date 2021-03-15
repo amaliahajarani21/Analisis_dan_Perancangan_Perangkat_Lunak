@@ -49,6 +49,7 @@ public class IntegerListTest
                 break; 
             case 2: 
                 list.selectionSortIncrease(); 
+                System.out.println("Time needed: " + System.currentTimeMillis());
                 break; 
             case 3: 
                 list.selectionSortDecrease(); 
@@ -60,6 +61,7 @@ public class IntegerListTest
                     System.out.println("Found at location " + loc); 
                 else 
                     System.out.println("Not in list"); 
+                System.out.println("Time needed: " + System.currentTimeMillis());
                 break; 
             case 5: 
                 list.print(); 
@@ -94,6 +96,11 @@ public class IntegerListTest
                     System.out.println("Found at location " + loc); 
                 else 
                     System.out.println("Not in list"); 
+                System.out.println("Time needed: " + System.currentTimeMillis());
+                break; 
+            case 9: 
+                list.insertionSort();
+                System.out.println("Time needed: " + System.currentTimeMillis());
                 break; 
             default: 
                 System.out.println("Sorry, invalid choice"); 
@@ -116,6 +123,8 @@ public class IntegerListTest
         System.out.println("6: Change Value (only the first similar value will be changed)"); 
         System.out.println("7: Change Value (all similar value will be changed)"); 
         System.out.println("8: Find an element in the list using binary search"); 
+        System.out.println("9: Sort the list using insertion sort in increasing order"); 
         System.out.print("\nEnter your choice: "); 
     } 
+
 }
