@@ -35,7 +35,7 @@ public class Hourly extends Employee
     {
         double payment = payRate * hoursWorked;
         
-        hoursWorked = 0;
+        // hoursWorked = 0;
         
         return payment;
     }
