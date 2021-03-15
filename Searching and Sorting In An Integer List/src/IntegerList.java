@@ -80,4 +80,13 @@ public class IntegerList
             list[position] = newVal;
         }
     }
+
+    public void replaceAll (int oldVal, int newVal) {
+        int position = 0;
+        boolean exist = false;
+
+        for (int i=0; i < list.length-1; i++) 
+            if (list[i] == oldVal)
+                list[i] = newVal;
+    }
 } 

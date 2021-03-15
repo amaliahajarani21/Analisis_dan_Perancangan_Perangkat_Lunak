@@ -36,6 +36,8 @@ public class IntegerListTest
     public static void dispatch(int choice) 
     { 
         int loc; 
+        int oldVal, newVal;
+
         switch(choice) 
         { 
             case 0: 
@@ -64,7 +66,6 @@ public class IntegerListTest
             case 5:
                 Scanner scan1 = new Scanner(System.in); 
                 Scanner scan2 = new Scanner(System.in);
-                int oldVal, newVal;
 
                 System.out.println("Insert value that you want to change: ");
                 oldVal = scan1.nextInt();
@@ -72,6 +73,18 @@ public class IntegerListTest
                 newVal = scan1.nextInt();
 
                 list.replaceFirst(oldVal, newVal);
+                break;
+            case 6:
+                Scanner scan3 = new Scanner(System.in); 
+                Scanner scan4 = new Scanner(System.in);
+                int oldValue, newValue;
+
+                System.out.println("Insert value that you want to change: ");
+                oldVal = scan3.nextInt();
+                System.out.println("Insert value replacement: ");
+                newVal = scan4.nextInt();
+
+                list.replaceAll(oldVal, newVal);
                 break;
             default: 
                 System.out.println("Sorry, invalid choice"); 
@@ -90,7 +103,8 @@ public class IntegerListTest
         System.out.println("2: Sort the list using selection sort"); 
         System.out.println("3: Find an element in the list using linear search"); 
         System.out.println("4: Print the list"); 
-        System.out.println("5: Change Value"); 
+        System.out.println("5: Change Value (only the first similar value will be changed)"); 
+        System.out.println("6: Change Value (all similar value will be changed)"); 
         System.out.print("\nEnter your choice: "); 
     } 
 }
