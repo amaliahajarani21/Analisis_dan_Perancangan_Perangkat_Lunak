@@ -63,11 +63,21 @@ public class IntegerList
             minIndex = i; 
             for (int j = i+1; j < list.length; j++) 
                 if (list[j] < list[minIndex]) 
-                minIndex = j; 
+                    minIndex = j; 
             //swap list[i] with smallest element 
             int temp = list[i]; 
             list[i] = list[minIndex]; 
             list[minIndex] = temp; 
         } 
     } 
+
+    public void replaceAll(int oldVal, int newVal) {
+        int position = search(oldVal);
+
+        if(position == -1) {
+            throw new java.lang.Error("Value not found!");
+        } else {
+            list[position] = newVal;
+        }
+    }
 } 
