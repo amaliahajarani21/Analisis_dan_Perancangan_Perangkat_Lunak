@@ -107,30 +107,20 @@ public class IntegerList
     public int binarySearchD (int target) {
         int first = 0;
         int last = list.length - 1;
-        int mid = (first + last) / 2;
         int position = -1;
 
         while (first <= last) {
-            System.out.println("hello1");
+            int mid = (first + last) / 2;
             if (list[mid] < target) {
                 first = mid + 1;
-                System.out.println("hello2");
+            } else if (list[mid] > target) {
+                last= mid - 1;
             } else if (list[mid] == target) {
                 position = mid;
-                System.out.println("hello3");
-            } else {
-                last = mid - 1;
-                System.out.println("hello4");
+                break;
             }
-            mid = (first + last) / 2;
-            System.out.println("hello5");
         }
-
-        if (first > last) {
-            position = -1;
-            System.out.println("hello6");
-        }
-        System.out.println(position);
+        
         return position;
     }
 } 
