@@ -24,7 +24,7 @@ public class IntegerList
     public void randomize() 
     { 
         for (int i=0; i<list.length; i++) 
-            list[i] = (int)(Math.random() * 80000) + 1; 
+            list[i] = (int)(Math.random() * 2000000) + 1; 
     } 
     
     //------------------------------------------------------- 
