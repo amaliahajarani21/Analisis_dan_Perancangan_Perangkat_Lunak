@@ -9,7 +9,7 @@ import java.util.*;
 
 public class IntegerListTest 
 { 
-    static IntegerList list = new IntegerList(10); 
+    static IntegerList list = new IntegerList(80000); 
     static Scanner scan = new Scanner(System.in); 
     
     //------------------------------------------------------- 
