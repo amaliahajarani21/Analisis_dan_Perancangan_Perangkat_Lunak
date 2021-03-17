@@ -76,12 +76,11 @@ public class IntegerList
         int maxIndex; 
         for (int i=0; i < list.length-1; i++) 
         { 
-            //find smallest element in list starting at location i 
             maxIndex = i; 
             for (int j = i+1; j < list.length; j++) 
                 if (list[j] > list[maxIndex]) 
                     maxIndex = j; 
-            //swap list[i] with smallest element 
+            
             int temp = list[i]; 
             list[i] = list[maxIndex]; 
             list[maxIndex] = temp; 
@@ -111,9 +110,9 @@ public class IntegerList
 
         while (first <= last) {
             int mid = (first + last) / 2;
-            if (list[mid] < target) {
+            if (list[mid] > target) {
                 first = mid + 1;
-            } else if (list[mid] > target) {
+            } else if (list[mid] < target) {
                 last= mid - 1;
             } else if (list[mid] == target) {
                 position = mid;
