@@ -49,7 +49,7 @@ public class Salesperson implements Comparable
         int compareObject;
 
         if (this.totalSales == ((Salesperson)other).getSales()) {
-            if (this.lastName == ((Salesperson)other).getLastName()) {
+            if (this.lastName.compareTo(((Salesperson)other).getLastName()) == 0) {
                 compareObject = this.firstName.compareTo(((Salesperson)other).getFirstName());
                 result = compareObject > 0 ?  1 : -1;
             }
@@ -58,7 +58,7 @@ public class Salesperson implements Comparable
                 result = compareObject > 0 ?  1 : -1;
             }
         } else {
-            comp
+            result = this.totalSales > ((Salesperson)other).getSales() ? 1 : -1;
         }
         
         return result; 
