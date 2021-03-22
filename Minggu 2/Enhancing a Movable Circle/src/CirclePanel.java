@@ -14,6 +14,8 @@ public class CirclePanel extends JPanel
     private final int CIRCLE_SIZE = 50; 
     private int x,y; 
     private Color c; 
+    private int currXPostition = 0;
+    private int currYPosition = 0;
     //--------------------------------------------------------------- 
     // Set up circle and buttons to move it. 
     //--------------------------------------------------------------- 
@@ -33,6 +35,14 @@ public class CirclePanel extends JPanel
         JButton up = new JButton("Up"); 
         JButton down = new JButton("Down"); 
         
+        left.setToolTipText("Moving 20 steps to the left");
+        right.setToolTipText("Moving 20 steps to the right");
+        up.setToolTipText("Moving 20 steps to the top");
+        down.setToolTipText("Moving 20 steps to the bottom");
+
+        if (checkEdge()) {
+            
+        }
         // Add listeners and mnemonic to the buttons 
         left.addActionListener(new MoveListener(-20,0)); 
         left.setMnemonic(KeyEvent.VK_1);
@@ -54,11 +64,6 @@ public class CirclePanel extends JPanel
         buttonPanel.add(up); 
         buttonPanel.add(down); 
 
-        //set tooltip
-        JTextArea t1 = new JTextArea(4,4);
-        t1.setToolTipText("Moving to the left");
-        left.add(t1);
-        
         // Add the button panel to the bottom of the main panel 
         this.add(buttonPanel, "South"); 
     } 
@@ -72,6 +77,8 @@ public class CirclePanel extends JPanel
         page.setColor(c); 
         page.fillOval(x,y,CIRCLE_SIZE,CIRCLE_SIZE); 
     } 
+
+
     
     //--------------------------------------------------------------- 
     // Class to listen for button clicks that move circle. 
@@ -95,9 +102,25 @@ public class CirclePanel extends JPanel
         //--------------------------------------------------------------- 
         public void actionPerformed(ActionEvent e) 
         { 
-            x += dx; 
-            y += dy; 
-            repaint(); 
+            try {
+                if (checkEdge()) {
+                    x += dx; 
+                    currXPostition += dx;
+                    y += dy; 
+                    currYPosition +=dy;
+                    repaint();
+                }
+            } catch (Exception error) {
+                System.out.println("No space available");
+            }
+             
         } 
+
+        public boolean checkEdge() {
+            if (currXPostition >= 0 || currYPosition >= 0) {
+                return true;
+            }
+            return false;
+        }
     } 
 }
