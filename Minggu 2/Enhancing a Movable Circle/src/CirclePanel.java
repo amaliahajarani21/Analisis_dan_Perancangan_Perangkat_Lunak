@@ -8,7 +8,7 @@ import java.awt.*;
 import javax.swing.*; 
 import java.awt.event.*; 
 
-public class CirclePanel extends JPanel 
+public class CirclePanel extends JPanel  
 
 { 
     private final int CIRCLE_SIZE = 50; 
@@ -32,20 +32,19 @@ public class CirclePanel extends JPanel
         JButton right = new JButton("Right"); 
         JButton up = new JButton("Up"); 
         JButton down = new JButton("Down"); 
-
-        // JButton mne1 = new JButton("alt-1"); 
-        // JButton mne2 = new JButton("alt-r"); 
-        // JButton mne3 = new JButton("alt-u"); 
-        // JButton mne4 = new JButton("alt-d");
         
-        // Add listeners to the buttons 
+        // Add listeners and mnemonic to the buttons 
         left.addActionListener(new MoveListener(-20,0)); 
-        left.setMnemonic(1);
+        left.setMnemonic(KeyEvent.VK_1);
+        
         right.addActionListener(new MoveListener(20,0)); 
+        right.setMnemonic(KeyEvent.VK_R);
+        
         up.addActionListener(new MoveListener(0,-20)); 
+        up.setMnemonic(KeyEvent.VK_U);
+        
         down.addActionListener(new MoveListener(0,20)); 
-
-        // mne1.addActionListener(new MoveListener(-20, 0));
+        down.setMnemonic(KeyEvent.VK_D);
         
         // Need a panel to put the buttons on or they'll be on 
         // top of each other. 
@@ -54,6 +53,11 @@ public class CirclePanel extends JPanel
         buttonPanel.add(right); 
         buttonPanel.add(up); 
         buttonPanel.add(down); 
+
+        //set tooltip
+        JTextArea t1 = new JTextArea(4,4);
+        t1.setToolTipText("Moving to the left");
+        left.add(t1);
         
         // Add the button panel to the bottom of the main panel 
         this.add(buttonPanel, "South"); 
