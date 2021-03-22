@@ -14,8 +14,8 @@ public class CirclePanel extends JPanel
     private final int CIRCLE_SIZE = 50; 
     private int x,y; 
     private Color c; 
-    private int currXPostition = 0;
-    private int currYPosition = 0;
+    private int currXPostition, currYPosition;
+
     //--------------------------------------------------------------- 
     // Set up circle and buttons to move it. 
     //--------------------------------------------------------------- 
@@ -24,6 +24,8 @@ public class CirclePanel extends JPanel
         // Set coordinates so circle starts in middle 
         x = (width/2)-(CIRCLE_SIZE/2); 
         y = (height/2)-(CIRCLE_SIZE/2); 
+        currXPostition = (width/2)-(CIRCLE_SIZE/2);
+        currYPosition = (height/2)-(CIRCLE_SIZE/2); 
         c = Color.green; 
         
         // Need a border layout to get the buttons on the bottom 
@@ -40,9 +42,6 @@ public class CirclePanel extends JPanel
         up.setToolTipText("Moving 20 steps to the top");
         down.setToolTipText("Moving 20 steps to the bottom");
 
-        if (checkEdge()) {
-            
-        }
         // Add listeners and mnemonic to the buttons 
         left.addActionListener(new MoveListener(-20,0)); 
         left.setMnemonic(KeyEvent.VK_1);
@@ -102,25 +101,22 @@ public class CirclePanel extends JPanel
         //--------------------------------------------------------------- 
         public void actionPerformed(ActionEvent e) 
         { 
-            try {
-                if (checkEdge()) {
-                    x += dx; 
-                    currXPostition += dx;
-                    y += dy; 
-                    currYPosition +=dy;
-                    repaint();
-                }
-            } catch (Exception error) {
-                System.out.println("No space available");
+            if (checkEdge() == true) {
+                x += dx; 
+                currXPostition += x;
+                y += dy; 
+                currYPosition +=x;
+                System.out.println(dx + "and" + dy);
+                repaint();
             }
              
         } 
 
         public boolean checkEdge() {
-            if (currXPostition >= 0 || currYPosition >= 0) {
-                return true;
+            if (currXPostition < 0 || currYPosition < 0) {
+                return false;
             }
-            return false;
+            return true;
         }
     } 
 }
