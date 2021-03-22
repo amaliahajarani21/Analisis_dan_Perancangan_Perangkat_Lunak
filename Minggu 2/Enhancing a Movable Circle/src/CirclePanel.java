@@ -14,6 +14,7 @@ public class CirclePanel extends JPanel
     private final int CIRCLE_SIZE = 50; 
     private int x,y; 
     private Color c; 
+    private int max_X, max_Y;
     private int currXPostition, currYPosition;
 
     //--------------------------------------------------------------- 
@@ -24,8 +25,10 @@ public class CirclePanel extends JPanel
         // Set coordinates so circle starts in middle 
         x = (width/2)-(CIRCLE_SIZE/2); 
         y = (height/2)-(CIRCLE_SIZE/2); 
-        currXPostition = (width/2)-(CIRCLE_SIZE/2);
-        currYPosition = (height/2)-(CIRCLE_SIZE/2); 
+        currXPostition = x;
+        currYPosition = y;
+        max_X = width;
+        max_Y = height; 
         c = Color.green; 
         
         // Need a border layout to get the buttons on the bottom 
@@ -66,6 +69,20 @@ public class CirclePanel extends JPanel
         // Add the button panel to the bottom of the main panel 
         this.add(buttonPanel, "South"); 
     } 
+
+    public boolean checkEdge() {
+        if (currXPostition > max_X || currYPosition > max_Y) {
+            return false;
+        } else if (currXPostition < 0 || currYPosition < 0) {
+            return false;
+        }
+        // } else if (currXPostition == 0 && currYPosition > max_Y || currXPostition == 0 && currYPosition < 0) {
+        //     return false;
+        // }else if (currYPosition == 0 && currXPostition > max_X || currYPosition == 0 && currXPostition < 0) {
+        //     return false;
+        // }
+        return true;
+    }
     
     //--------------------------------------------------------------- 
     // Draw circle on CirclePanel 
@@ -77,8 +94,6 @@ public class CirclePanel extends JPanel
         page.fillOval(x,y,CIRCLE_SIZE,CIRCLE_SIZE); 
     } 
 
-
-    
     //--------------------------------------------------------------- 
     // Class to listen for button clicks that move circle. 
     //--------------------------------------------------------------- 
@@ -102,21 +117,19 @@ public class CirclePanel extends JPanel
         public void actionPerformed(ActionEvent e) 
         { 
             if (checkEdge() == true) {
+                currXPostition += dx;
+                currYPosition += dy;
                 x += dx; 
-                currXPostition += x;
                 y += dy; 
-                currYPosition +=x;
-                System.out.println(dx + "and" + dy);
                 repaint();
+            }  else {
+                System.out.println("Please Choose Another Button");
+                currXPostition += dx;
+                currYPosition += dy;
+                x += dx; 
+                y += dy;
             }
-             
+            System.out.println( "X is ="+ currXPostition + " Y is: " + currYPosition);
         } 
-
-        public boolean checkEdge() {
-            if (currXPostition < 0 || currYPosition < 0) {
-                return false;
-            }
-            return true;
-        }
     } 
 }
