@@ -12,6 +12,9 @@ public class RatePanel extends JPanel
     private double[] rate; // exchange rates 
     private String[] currencyName; 
     private JLabel result; 
+    private JComboBox selection;
+    private JTextField textField;
+    private JButton submit;
     
     // ------------------------------------------------------------ 
     // Sets up a panel to convert cost from one of 6 currencies 
@@ -35,7 +38,11 @@ public class RatePanel extends JPanel
         
         result = new JLabel (" ------------ "); 
 
-        JComboBox selection =new JComboBox(currencyName); 
+        selection = new JComboBox(currencyName); 
+
+        textField = new JTextField();
+
+        submit = new JButton("SUBMIT");
         
         add (title); 
         
@@ -43,7 +50,11 @@ public class RatePanel extends JPanel
 
         add (selection);
 
-        result.addActionListener(new actionPerformed(selection));
+        add (textField);
+
+        add (submit);
+
+        selection.addActionListener(new ComboListener());
     
     } 
     
@@ -59,11 +70,10 @@ public class RatePanel extends JPanel
         // -------------------------------------------------- 
         public void actionPerformed (ActionEvent event) 
         { 
-            int index = event.getModifiers(); 
+            int index = selection.getSelectedIndex(); 
             result.setText ("1 " + currencyName[index] + 
                     " = " + rate[index] + " U.S. Dollars"); 
-            System.out.println("1 " + currencyName[index] + 
-            " = " + rate[index] + " U.S. Dollars");
+            System.out.println(index);
         } 
     } 
 }
