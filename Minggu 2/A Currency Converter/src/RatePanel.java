@@ -34,10 +34,16 @@ public class RatePanel extends JPanel
                             0.0222, 0.0880}; 
         
         result = new JLabel (" ------------ "); 
+
+        JComboBox selection =new JComboBox(currencyName); 
         
         add (title); 
         
         add (result); 
+
+        add (selection);
+
+        result.addActionListener(new actionPerformed(selection));
     
     } 
     
@@ -53,9 +59,11 @@ public class RatePanel extends JPanel
         // -------------------------------------------------- 
         public void actionPerformed (ActionEvent event) 
         { 
-            int index = 0; 
+            int index = event.getModifiers(); 
             result.setText ("1 " + currencyName[index] + 
                     " = " + rate[index] + " U.S. Dollars"); 
+            System.out.println("1 " + currencyName[index] + 
+            " = " + rate[index] + " U.S. Dollars");
         } 
     } 
 }
