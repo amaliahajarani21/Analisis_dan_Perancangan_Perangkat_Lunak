@@ -76,11 +76,6 @@ public class CirclePanel extends JPanel
         } else if (currXPostition < 0 || currYPosition < 0) {
             return false;
         }
-        // } else if (currXPostition == 0 && currYPosition > max_Y || currXPostition == 0 && currYPosition < 0) {
-        //     return false;
-        // }else if (currYPosition == 0 && currXPostition > max_X || currYPosition == 0 && currXPostition < 0) {
-        //     return false;
-        // }
         return true;
     }
     
@@ -116,20 +111,15 @@ public class CirclePanel extends JPanel
         //--------------------------------------------------------------- 
         public void actionPerformed(ActionEvent e) 
         { 
+            currXPostition += dx;
+            currYPosition += dy;
+            x += dx; 
+            y += dy;
             if (checkEdge() == true) {
-                currXPostition += dx;
-                currYPosition += dy;
-                x += dx; 
-                y += dy; 
                 repaint();
             }  else {
                 System.out.println("Please Choose Another Button");
-                currXPostition += dx;
-                currYPosition += dy;
-                x += dx; 
-                y += dy;
             }
-            System.out.println( "X is ="+ currXPostition + " Y is: " + currYPosition);
         } 
     } 
 }

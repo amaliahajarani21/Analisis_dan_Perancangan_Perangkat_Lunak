@@ -1,9 +1,3 @@
-// ****************************************************************** 
-// RatePanel.java 
-// 
-// Panel for a program that converts different currencies to 
-// U.S. Dollars 
-// ****************************************************************** 
 import java.awt.*; 
 import java.awt.event.*; 
 import javax.swing.*; 
@@ -17,12 +11,6 @@ public class RatePanel extends JPanel
     private JButton submit;
     private JLabel convertionResult;
     
-    // ------------------------------------------------------------ 
-    // Sets up a panel to convert cost from one of 6 currencies 
-    // into U.S. Dollars. The panel contains a heading, a text 
-    // field for the cost of the item, a combo box for selecting 
-    // the currency, and a label to display the result. 
-    // ------------------------------------------------------------ 
     public RatePanel () 
     { 
         JLabel title = new JLabel ("How much is that in dollars?"); 
@@ -66,31 +54,20 @@ public class RatePanel extends JPanel
     } 
 
     public double checkInput(JTextField text) {
-        // boolean incorrect = true;
         String value = text.getText();
         double valueInput = 0;
 
         try {
             valueInput = Double.parseDouble(value);
-            // incorrect = false;
         } catch (NumberFormatException nfe) {
-            // incorrect = false;
             JOptionPane.showMessageDialog(new JFrame(), "Invalid input. Please only fill with number", "Warning",
             JOptionPane.ERROR_MESSAGE);
         }
         return valueInput;
     }
-    
-    // ****************************************************** 
-    // Represents an action listener for the combo box. 
-    // ****************************************************** 
+
     private class ComboListener implements ActionListener 
     { 
-        // -------------------------------------------------- 
-        // Determines which currency has been selected and 
-        // the value in that currency then computes and 
-        // displays the value in U.S. Dollars. 
-        // -------------------------------------------------- 
         public void actionPerformed (ActionEvent event) 
         { 
             int index = selection.getSelectedIndex(); 
@@ -100,8 +77,10 @@ public class RatePanel extends JPanel
                     " = " + rate[index] + " U.S. Dollars"); 
             }
             if (event.getSource() == submit) {
-                double ammountOfMoney = checkInput(textField) * rate[index];
-                convertionResult.setText(" = " + ammountOfMoney + " U.S. Dollars");
+                double ammountOfMoney = checkInput(textField) 
+                                        * rate[index];
+                convertionResult.setText(" = " + ammountOfMoney + 
+                    " U.S. Dollars");
             }
         } 
     } 
