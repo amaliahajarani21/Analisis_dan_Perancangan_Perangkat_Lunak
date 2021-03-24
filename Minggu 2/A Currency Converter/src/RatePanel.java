@@ -70,16 +70,14 @@ public class RatePanel extends JPanel
         String value = text.getText();
         double valueInput = 0;
 
-        // while (incorrect) {
-            try {
-                valueInput = Double.parseDouble(value);
-                // incorrect = false;
-            } catch (NumberFormatException nfe) {
-                // incorrect = false;
-                JOptionPane.showMessageDialog(new JFrame(), "Invalid input. Please only fill with number", "Warning",
-                JOptionPane.ERROR_MESSAGE);
-            }
-        // }
+        try {
+            valueInput = Double.parseDouble(value);
+            // incorrect = false;
+        } catch (NumberFormatException nfe) {
+            // incorrect = false;
+            JOptionPane.showMessageDialog(new JFrame(), "Invalid input. Please only fill with number", "Warning",
+            JOptionPane.ERROR_MESSAGE);
+        }
         return valueInput;
     }
     
