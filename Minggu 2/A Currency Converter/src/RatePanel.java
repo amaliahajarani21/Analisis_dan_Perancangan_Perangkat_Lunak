@@ -66,21 +66,21 @@ public class RatePanel extends JPanel
     } 
 
     public double checkInput(JTextField text) {
-        boolean incorrect = true;
+        // boolean incorrect = true;
         String value = text.getText();
         double valueInput = 0;
 
-        while (incorrect) {
+        // while (incorrect) {
             try {
                 valueInput = Double.parseDouble(value);
-                // Double.parseDouble(value);
-                incorrect = false;
+                // incorrect = false;
             } catch (NumberFormatException nfe) {
-                value = JOptionPane.showInputDialog("Invalid input. Please only fill with number");
+                // incorrect = false;
+                JOptionPane.showMessageDialog(new JFrame(), "Invalid input. Please only fill with number", "Warning",
+                JOptionPane.ERROR_MESSAGE);
             }
-        }
-
-         return valueInput;
+        // }
+        return valueInput;
     }
     
     // ****************************************************** 
@@ -88,7 +88,6 @@ public class RatePanel extends JPanel
     // ****************************************************** 
     private class ComboListener implements ActionListener 
     { 
-
         // -------------------------------------------------- 
         // Determines which currency has been selected and 
         // the value in that currency then computes and 
@@ -97,15 +96,14 @@ public class RatePanel extends JPanel
         public void actionPerformed (ActionEvent event) 
         { 
             int index = selection.getSelectedIndex(); 
-            result.setText ("1 " + currencyName[index] + 
+
+            if (event.getSource() == selection) {
+                result.setText ("1 " + currencyName[index] + 
                     " = " + rate[index] + " U.S. Dollars"); 
-            
-            if (submit.getModel().isPressed()) {
+            }
+            if (event.getSource() == submit) {
                 double ammountOfMoney = checkInput(textField) * rate[index];
-                convertionResult.setText("Total: " + ammountOfMoney);
-                System.out.println(submit.getModel().isPressed());
-            } else {
-                System.out.println("hello");
+                convertionResult.setText(" = " + ammountOfMoney + " U.S. Dollars");
             }
         } 
     } 
