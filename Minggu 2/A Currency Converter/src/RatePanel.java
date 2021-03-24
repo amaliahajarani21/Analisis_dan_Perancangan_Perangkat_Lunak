@@ -42,6 +42,8 @@ public class RatePanel extends JPanel
 
         textField = new JTextField();
 
+        textField.setPreferredSize(new Dimension(80, 30));
+
         submit = new JButton("SUBMIT");
         
         add (title); 
@@ -55,8 +57,26 @@ public class RatePanel extends JPanel
         add (submit);
 
         selection.addActionListener(new ComboListener());
-    
+        checkInput(textField);
     } 
+
+    public void checkInput(JTextField text) {
+        boolean incorrect = true;
+        String value = text.getText();
+        //double valueInput = 0;
+
+        while (incorrect) {
+            try {
+                //valueInput = Double.parseDouble(value);
+                Double.parseDouble(value);
+                incorrect = false;
+            } catch (NumberFormatException nfe) {
+                value = JOptionPane.showInputDialog("Invalid input. Please only fill with number");
+            }
+        }
+
+        //return valueInput;
+    }
     
     // ****************************************************** 
     // Represents an action listener for the combo box. 
