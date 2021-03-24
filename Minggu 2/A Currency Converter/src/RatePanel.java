@@ -15,6 +15,7 @@ public class RatePanel extends JPanel
     private JComboBox selection;
     private JTextField textField;
     private JButton submit;
+    private JLabel convertionResult;
     
     // ------------------------------------------------------------ 
     // Sets up a panel to convert cost from one of 6 currencies 
@@ -45,6 +46,8 @@ public class RatePanel extends JPanel
         textField.setPreferredSize(new Dimension(80, 30));
 
         submit = new JButton("SUBMIT");
+
+        convertionResult = new JLabel();
         
         add (title); 
         
@@ -56,26 +59,28 @@ public class RatePanel extends JPanel
 
         add (submit);
 
+        add (convertionResult);
+
         selection.addActionListener(new ComboListener());
-        checkInput(textField);
+        submit.addActionListener(new ComboListener());
     } 
 
-    public void checkInput(JTextField text) {
+    public double checkInput(JTextField text) {
         boolean incorrect = true;
         String value = text.getText();
-        //double valueInput = 0;
+        double valueInput = 0;
 
         while (incorrect) {
             try {
-                //valueInput = Double.parseDouble(value);
-                Double.parseDouble(value);
+                valueInput = Double.parseDouble(value);
+                // Double.parseDouble(value);
                 incorrect = false;
             } catch (NumberFormatException nfe) {
                 value = JOptionPane.showInputDialog("Invalid input. Please only fill with number");
             }
         }
 
-        //return valueInput;
+         return valueInput;
     }
     
     // ****************************************************** 
@@ -83,6 +88,7 @@ public class RatePanel extends JPanel
     // ****************************************************** 
     private class ComboListener implements ActionListener 
     { 
+
         // -------------------------------------------------- 
         // Determines which currency has been selected and 
         // the value in that currency then computes and 
@@ -93,7 +99,14 @@ public class RatePanel extends JPanel
             int index = selection.getSelectedIndex(); 
             result.setText ("1 " + currencyName[index] + 
                     " = " + rate[index] + " U.S. Dollars"); 
-            System.out.println(index);
+            
+            if (submit.getModel().isPressed()) {
+                double ammountOfMoney = checkInput(textField) * rate[index];
+                convertionResult.setText("Total: " + ammountOfMoney);
+                System.out.println(submit.getModel().isPressed());
+            } else {
+                System.out.println("hello");
+            }
         } 
     } 
 }
